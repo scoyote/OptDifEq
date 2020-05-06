@@ -1,15 +1,14 @@
-%macro plotSolution(obj,low,high,by,sol=_sol,solvar=x);
-	data _null_; set _sol; call symput("solution",compress(round(x,0.1))); run;
+%macro plotSolution(obj,low,high,by);
+	%let obj = %qsysfunc(compress(%sysfunc(tranwrd("&obj",%str(^),%str(**))),"%"));
 	data _graph;
 		do x = &low to &high by &by;
-			y = &objective_function;
+			y = &obj;
 			output;
 		end;
 	run;
 	ods graphics /reset=all height=2in width=3in;
 	proc sgplot data=_graph;
 		series x = x y = y /smoothconnect;
-		inset ("f(x) = &objective_function minimized at x=" = "&solution");
 	run;
 %mend plotSolution;
 

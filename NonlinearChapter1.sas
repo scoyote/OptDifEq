@@ -6,8 +6,8 @@
 /*******************************************************************************/
 /*  https://documentation.sas.com/?docsetId=ormpug&docsetTarget=ormpug_nlpsolver_examples02.htm&docsetVersion=15.1&locale=en */
 
-%let rc=%sysfunc(dlgcdir("/home/sas/repositories/OptDifEq"));
-%include "Macros.sas";
+%let rc=%sysfunc(dlgcdir("/repositories/OptDifEq/Macros.sas"));
+%include "/repositories/OptDifEq/Macros.sas";
 
 
 /* Peressini et al pp.3 ex 1.1.6 */ 
